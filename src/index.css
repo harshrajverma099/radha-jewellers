@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F8F5EF;
+    color: #252525;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #C6A15B;
+    color: #FFFFFF;
+  }
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F5EF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C6A15B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A37E36;
+}
+
+/* Elegant gold gradient text utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #DFC68B 0%, #C6A15B 50%, #9A752F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #DFC68B 0%, #C6A15B 50%, #A37E36 100%);
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(to right, transparent, #C6A15B, transparent) 1;
+}
+
+/* Luxury card subtle hover effect */
+.card-hover-gold {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover-gold:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -12px rgba(18, 61, 50, 0.12);
+}
+
