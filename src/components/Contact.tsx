@@ -8,7 +8,7 @@ import { siteConfig, getWhatsAppUrl, trackEvent } from '../data/siteConfig';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 md:py-28 bg-ivory relative" aria-label="Contact Radha Jewellers">
+    <section id="contact" className="py-20 md:py-28 bg-ivory dark:bg-emerald-noir relative transition-colors duration-300" aria-label="Contact Radha Jewellers">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -21,15 +21,15 @@ export const Contact: React.FC = () => {
           {/* WhatsApp Card */}
           <StaggerItem3D className="flex">
             <Card3D maxTilt={10} depth={16} glare={true} className="w-full flex">
-              <div className="w-full bg-white p-8 rounded-2xl border border-beige/80 shadow-luxury flex flex-col justify-between text-center">
+              <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between text-center">
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center text-gold-dark mx-auto mb-5 border border-gold/30">
+                  <div className="w-14 h-14 rounded-2xl bg-cream dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light mx-auto mb-5 border border-gold/30">
                     <MessageCircle className="w-7 h-7" />
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  <h3 className="font-serif text-xl font-bold text-charcoal dark:text-ivory mb-2">
                     WhatsApp Chat
                   </h3>
-                  <p className="text-xs text-warmgray-dark leading-relaxed font-light mb-6">
+                  <p className="text-xs text-warmgray-dark dark:text-beige/75 leading-relaxed font-light mb-6">
                     Enquire directly about festive offers, jewellery styles, or custom craftsmanship.
                   </p>
                 </div>
@@ -51,15 +51,15 @@ export const Contact: React.FC = () => {
           {/* Telephone Card */}
           <StaggerItem3D className="flex">
             <Card3D maxTilt={10} depth={16} glare={true} className="w-full flex">
-              <div className="w-full bg-white p-8 rounded-2xl border border-beige/80 shadow-luxury flex flex-col justify-between text-center">
+              <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between text-center">
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center text-gold-dark mx-auto mb-5 border border-gold/30">
+                  <div className="w-14 h-14 rounded-2xl bg-cream dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light mx-auto mb-5 border border-gold/30">
                     <Phone className="w-7 h-7" />
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  <h3 className="font-serif text-xl font-bold text-charcoal dark:text-ivory mb-2">
                     Call Showroom
                   </h3>
-                  <p className="text-xs text-warmgray-dark leading-relaxed font-light mb-6">
+                  <p className="text-xs text-warmgray-dark dark:text-beige/75 leading-relaxed font-light mb-6">
                     Speak directly with our showroom team during visiting hours.
                   </p>
                 </div>
@@ -67,7 +67,7 @@ export const Contact: React.FC = () => {
                 <a
                   href={siteConfig.phoneLink}
                   onClick={() => trackEvent('contact_card_call_click')}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-gold text-gold-dark hover:bg-gold hover:text-white font-semibold text-xs uppercase tracking-wider transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-gold text-gold-dark dark:text-gold-light hover:bg-gold hover:text-white font-semibold text-xs uppercase tracking-wider transition-all"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{siteConfig.phoneDisplay}</span>
@@ -79,15 +79,15 @@ export const Contact: React.FC = () => {
           {/* Showroom Address Card */}
           <StaggerItem3D className="flex">
             <Card3D maxTilt={10} depth={16} glare={true} className="w-full flex">
-              <div className="w-full bg-white p-8 rounded-2xl border border-beige/80 shadow-luxury flex flex-col justify-between text-center">
+              <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between text-center">
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center text-gold-dark mx-auto mb-5 border border-gold/30">
+                  <div className="w-14 h-14 rounded-2xl bg-cream dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light mx-auto mb-5 border border-gold/30">
                     <MapPin className="w-7 h-7" />
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  <h3 className="font-serif text-xl font-bold text-charcoal dark:text-ivory mb-2">
                     Visit Us
                   </h3>
-                  <p className="text-xs text-warmgray-dark leading-relaxed font-light mb-6">
+                  <p className="text-xs text-warmgray-dark dark:text-beige/75 leading-relaxed font-light mb-6">
                     {siteConfig.address.line1}, {siteConfig.address.landmark}, {siteConfig.address.city}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ export const Contact: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent('contact_card_directions_click')}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>Get Directions</span>

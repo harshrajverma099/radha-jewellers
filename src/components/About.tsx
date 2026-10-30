@@ -29,7 +29,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-ivory relative" aria-label="About Radha Jewellers">
+    <section id="about" className="py-20 md:py-28 bg-ivory dark:bg-emerald-noir relative transition-colors duration-300" aria-label="About Radha Jewellers">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -44,7 +44,7 @@ export const About: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <Scroll3DReveal direction="right" delay={0.1}>
               <Card3D maxTilt={6} depth={20} glare={true}>
-                <div className="relative z-10 rounded-2xl overflow-hidden shadow-luxury border-2 border-beige bg-white p-2">
+                <div className="relative z-10 rounded-2xl overflow-hidden shadow-luxury dark:shadow-darkcard border-2 border-beige dark:border-white/10 bg-white dark:bg-emerald-card p-2">
                   <img
                     src="/images/showroom/showroom-interior.jpg"
                     alt="Radha Jewellers Showroom Experience in Hata, Kushinagar"
@@ -63,7 +63,7 @@ export const About: React.FC = () => {
             {/* Overlapping Floating Since 2003 Heritage Plaque */}
             <div className="absolute -bottom-6 -right-4 sm:-right-6 z-20">
               <Floating3D amplitude={5} duration={4.5}>
-                <div className="bg-emerald p-6 rounded-xl shadow-luxurydark border border-gold/40 max-w-[200px] text-center transform hover:scale-105 transition-transform">
+                <div className="bg-emerald dark:bg-emerald-surface p-6 rounded-xl shadow-luxurydark border border-gold/40 max-w-[200px] text-center transform hover:scale-105 transition-transform">
                   <span className="block text-xs uppercase tracking-widest text-gold-light font-semibold mb-1">
                     FOUNDED
                   </span>
@@ -85,35 +85,35 @@ export const About: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <Scroll3DReveal direction="left" delay={0.2}>
               <div className="inline-block">
-                <p className="font-serif text-2xl sm:text-3xl text-charcoal font-semibold leading-relaxed mb-4">
+                <p className="font-serif text-2xl sm:text-3xl text-charcoal dark:text-ivory font-semibold leading-relaxed mb-4">
                   “Since 2003, Radha Jewellers has represented the enduring beauty of jewellery and the emotions attached to life’s most meaningful moments.”
                 </p>
               </div>
 
-              <p className="text-base sm:text-lg text-warmgray-dark leading-relaxed font-light mb-4">
+              <p className="text-base sm:text-lg text-warmgray-dark dark:text-beige/85 leading-relaxed font-light mb-4">
                 Inspired by Indian heritage and an appreciation for timeless elegance, our brand brings together tradition, thoughtful design and a welcoming showroom experience in Hata, Kushinagar.
               </p>
 
-              <p className="text-sm sm:text-base text-warmgray-dark leading-relaxed">
+              <p className="text-sm sm:text-base text-warmgray-dark dark:text-beige/75 leading-relaxed">
                 We believe jewellery is far more than adornment — it is an emotion passed through generations, an auspicious blessing on wedding days, and a personal companion to the milestones that shape family histories.
               </p>
             </Scroll3DReveal>
 
             {/* 3 Pillars Grid with Staggered 3D Tilt */}
-            <Stagger3D staggerDelay={0.15} className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-beige">
+            <Stagger3D staggerDelay={0.15} className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-beige dark:border-white/10">
               {pillars.map((pillar) => {
                 const Icon = pillar.icon;
                 return (
                   <StaggerItem3D key={pillar.title}>
                     <Card3D maxTilt={8} depth={10} glare={false} className="h-full">
-                      <div className="space-y-2 p-3 rounded-xl bg-white/50 border border-beige/60 h-full hover:border-gold/40 transition-colors">
-                        <div className="w-10 h-10 rounded-lg bg-cream flex items-center justify-center text-gold-dark border border-beige/80">
+                      <div className="space-y-2 p-3 rounded-xl bg-white/50 dark:bg-emerald-surface/70 border border-beige/60 dark:border-white/10 h-full hover:border-gold/40 transition-colors">
+                        <div className="w-10 h-10 rounded-lg bg-cream dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light border border-beige/80 dark:border-white/10">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <h3 className="font-serif font-semibold text-lg text-charcoal">
+                        <h3 className="font-serif font-semibold text-lg text-charcoal dark:text-ivory">
                           {pillar.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-warmgray leading-relaxed">
+                        <p className="text-xs sm:text-sm text-warmgray dark:text-beige/70 leading-relaxed">
                           {pillar.description}
                         </p>
                       </div>
@@ -128,7 +128,7 @@ export const About: React.FC = () => {
               <div className="pt-4">
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-gold-dark hover:text-charcoal transition-colors group"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-gold-dark dark:text-gold-light hover:text-charcoal dark:hover:text-ivory transition-colors group"
                 >
                   <span>Read Our Full 20-Year Heritage Story</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />

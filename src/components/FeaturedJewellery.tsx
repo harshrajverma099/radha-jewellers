@@ -8,7 +8,7 @@ import { getWhatsAppUrl, trackEvent } from '../data/siteConfig';
 
 export const FeaturedJewellery: React.FC = () => {
   return (
-    <section id="featured" className="py-20 md:py-28 bg-ivory relative" aria-label="Featured Jewellery Showcase">
+    <section id="featured" className="py-20 md:py-28 bg-ivory dark:bg-emerald-noir relative transition-colors duration-300" aria-label="Featured Jewellery Showcase">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -22,7 +22,7 @@ export const FeaturedJewellery: React.FC = () => {
           {featuredJewelleryData.map((item) => (
             <StaggerItem3D key={item.id} className="flex">
               <Card3D maxTilt={8} depth={20} glare={true} className="w-full flex">
-                <div className="w-full group bg-white rounded-2xl overflow-hidden border border-beige/80 shadow-luxury flex flex-col justify-between">
+                <div className="w-full group bg-white dark:bg-emerald-surface rounded-2xl overflow-hidden border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between">
                   {/* Image Frame */}
                   <div className="relative h-72 sm:h-80 overflow-hidden bg-charcoal">
                     <img
@@ -35,7 +35,7 @@ export const FeaturedJewellery: React.FC = () => {
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-white/90 text-charcoal shadow-sm">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-white/90 dark:bg-emerald-midnight/90 text-charcoal dark:text-ivory shadow-sm">
                         <Sparkles className="w-3 h-3 text-gold" />
                         <span>{item.category}</span>
                       </span>
@@ -45,24 +45,24 @@ export const FeaturedJewellery: React.FC = () => {
                   {/* Editorial Details */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="font-serif text-xl sm:text-2xl font-bold text-charcoal mb-2 leading-snug">
+                      <h3 className="font-serif text-xl sm:text-2xl font-bold text-charcoal dark:text-ivory mb-2 leading-snug">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                      <p className="text-sm text-warmgray-dark dark:text-beige/85 leading-relaxed font-light">
                         {item.description}
                       </p>
                     </div>
 
                     {/* WhatsApp Enquiry Button */}
-                    <div className="pt-4 border-t border-beige/60">
+                    <div className="pt-4 border-t border-beige/60 dark:border-white/10">
                       <a
                         href={getWhatsAppUrl(item.whatsappMessage)}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackEvent('featured_whatsapp_click', { item: item.title })}
-                        className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all"
+                        className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all"
                       >
-                        <MessageCircle className="w-3.5 h-3.5 text-gold-dark" />
+                        <MessageCircle className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
                         <span>Enquire on WhatsApp</span>
                       </a>
                     </div>

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -14,6 +15,10 @@ export default {
         emerald: {
           DEFAULT: '#123D32',
           dark: '#0B2720',
+          noir: '#071813',
+          midnight: '#0A201A',
+          surface: '#11332A',
+          card: '#143C31',
           light: '#1B5244',
           accent: '#17473A',
         },
@@ -46,11 +51,11 @@ export default {
       },
       boxShadow: {
         luxury: '0 10px 35px -5px rgba(18, 61, 50, 0.08)',
-        luxurydark: '0 15px 40px -10px rgba(0, 0, 0, 0.45)',
+        luxurydark: '0 15px 40px -10px rgba(0, 0, 0, 0.55)',
         goldglow: '0 0 25px rgba(198, 161, 91, 0.25)',
+        darkcard: '0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 161, 91, 0.18)',
       },
     },
   },
   plugins: [],
 };
-

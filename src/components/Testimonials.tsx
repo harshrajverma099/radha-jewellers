@@ -19,7 +19,7 @@ export const Testimonials: React.FC = () => {
   const hasGoogleReviewsUrl = Boolean(siteConfig.googleReviewsUrl && siteConfig.googleReviewsUrl.trim().length > 0);
 
   return (
-    <section id="reviews" className="py-20 md:py-28 bg-ivory relative" aria-label="Customer Reviews">
+    <section id="reviews" className="py-20 md:py-28 bg-ivory dark:bg-emerald-noir relative transition-colors duration-300" aria-label="Customer Reviews">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -34,7 +34,7 @@ export const Testimonials: React.FC = () => {
             {genuineReviews.map((rev) => (
               <div
                 key={rev.id}
-                className="bg-white p-8 rounded-2xl border border-beige shadow-luxury card-hover-gold flex flex-col justify-between"
+                className="bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-1 text-gold mb-4">
@@ -42,13 +42,13 @@ export const Testimonials: React.FC = () => {
                       <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                     ))}
                   </div>
-                  <p className="font-serif italic text-charcoal text-base mb-6 leading-relaxed">
+                  <p className="font-serif italic text-charcoal dark:text-ivory text-base mb-6 leading-relaxed">
                     “{rev.content}”
                   </p>
                 </div>
-                <div className="pt-4 border-t border-beige/60">
-                  <p className="font-serif font-bold text-charcoal">{rev.customerName}</p>
-                  <p className="text-xs text-warmgray">{rev.occasion}</p>
+                <div className="pt-4 border-t border-beige/60 dark:border-white/10">
+                  <p className="font-serif font-bold text-charcoal dark:text-ivory">{rev.customerName}</p>
+                  <p className="text-xs text-warmgray dark:text-beige/70">{rev.occasion}</p>
                 </div>
               </div>
             ))}
@@ -57,16 +57,16 @@ export const Testimonials: React.FC = () => {
           /* Graceful, authentic state inviting customers to experience Radha Jewellers with 3D Depth */
           <Scroll3DReveal delay={0.15}>
             <Card3D maxTilt={5} depth={15} glare={true} className="max-w-3xl mx-auto">
-              <div className="text-center bg-white p-10 sm:p-14 rounded-3xl border border-beige/80 shadow-luxury">
-                <div className="w-16 h-16 rounded-full bg-cream mx-auto flex items-center justify-center text-gold-dark mb-6 border border-gold/30">
+              <div className="text-center bg-white dark:bg-emerald-surface p-10 sm:p-14 rounded-3xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard">
+                <div className="w-16 h-16 rounded-full bg-cream dark:bg-emerald-midnight mx-auto flex items-center justify-center text-gold-dark dark:text-gold-light mb-6 border border-gold/30">
                   <HeartHandshake className="w-8 h-8" />
                 </div>
 
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-4">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal dark:text-ivory mb-4">
                   A Relationship Built on Integrity Since 2003
                 </h3>
 
-                <p className="text-base text-warmgray-dark leading-relaxed font-light mb-8 max-w-xl mx-auto">
+                <p className="text-base text-warmgray-dark dark:text-beige/85 leading-relaxed font-light mb-8 max-w-xl mx-auto">
                   For over twenty years, families across Hata and Kushinagar have trusted Radha Jewellers with their most cherished wedding and festive adornments. We invite you to visit our showroom and become part of our extended family.
                 </p>
 
@@ -88,7 +88,7 @@ export const Testimonials: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackEvent('google_reviews_link_click')}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-beige hover:border-gold text-charcoal hover:text-gold-dark bg-cream/30 font-medium text-xs uppercase tracking-wider transition-all"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light bg-cream/30 dark:bg-emerald-midnight/60 font-medium text-xs uppercase tracking-wider transition-all"
                     >
                       <span>Read Google Reviews</span>
                       <ExternalLink className="w-3.5 h-3.5" />

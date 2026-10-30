@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="pt-20 sm:pt-24 pb-20 bg-ivory text-charcoal">
+      <div className="pt-20 sm:pt-24 pb-20 bg-ivory dark:bg-emerald-noir text-charcoal dark:text-ivory transition-colors duration-300">
         {/* Editorial Header Banner */}
       <section className="relative py-16 sm:py-24 bg-emerald-dark text-ivory overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -67,7 +67,7 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <Scroll3DReveal direction="right" delay={0.1}>
               <Card3D maxTilt={7} depth={22} glare={true}>
-                <div className="rounded-3xl overflow-hidden border-2 border-beige shadow-luxury bg-white p-2">
+                <div className="rounded-3xl overflow-hidden border-2 border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard bg-white dark:bg-emerald-card p-2">
                   <img
                     src="/images/showroom/showroom-interior.jpg"
                     alt="Radha Jewellers Showroom"
@@ -77,7 +77,7 @@ export const AboutPage: React.FC = () => {
               </Card3D>
             </Scroll3DReveal>
             {/* Heritage Plaque */}
-            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-emerald p-6 rounded-2xl shadow-luxurydark border border-gold/40 text-ivory text-center max-w-[210px] z-10">
+            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-emerald dark:bg-emerald-surface p-6 rounded-2xl shadow-luxurydark border border-gold/40 text-ivory text-center max-w-[210px] z-10">
               <span className="block text-xs uppercase tracking-widest text-gold-light font-semibold mb-1">
                 OUR PROMISE
               </span>
@@ -92,19 +92,19 @@ export const AboutPage: React.FC = () => {
 
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-block">
-              <span className="text-xs uppercase tracking-widestluxury text-gold-dark font-semibold">
+              <span className="text-xs uppercase tracking-widestluxury text-gold-dark dark:text-gold-light font-semibold">
                 OUR BEGINNINGS
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-charcoal mt-1">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-charcoal dark:text-ivory mt-1">
                 Rooted in Kushinagar, Celebrated Across Generations
               </h2>
             </div>
 
-            <p className="text-base text-warmgray-dark leading-relaxed font-light">
+            <p className="text-base text-warmgray-dark dark:text-beige/85 leading-relaxed font-light">
               Since 2003, Radha Jewellers has represented the enduring beauty of jewellery and the emotions attached to life’s most meaningful moments. Located in Hata, Kushinagar, our showroom has been a cornerstone for families preparing for weddings, festive occasions, and milestone celebrations.
             </p>
 
-            <p className="text-base text-warmgray-dark leading-relaxed font-light">
+            <p className="text-base text-warmgray-dark dark:text-beige/75 leading-relaxed font-light">
               We believe jewellery is far more than adornment — it is a blessing passed down through generations, an emotional heirloom, and a symbol of lasting relationships built on mutual respect and integrity.
             </p>
 
@@ -119,9 +119,9 @@ export const AboutPage: React.FC = () => {
 
               <Link
                 to="/showroom"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-surface/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all"
               >
-                <MapPin className="w-4 h-4 text-gold-dark" />
+                <MapPin className="w-4 h-4 text-gold-dark dark:text-gold-light" />
                 <span>Visit Showroom in Hata</span>
               </Link>
             </div>
@@ -130,7 +130,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* 3 Core Pillars */}
-      <section className="py-16 bg-cream/40 border-y border-beige">
+      <section className="py-16 bg-cream/40 dark:bg-emerald-midnight/40 border-y border-beige dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Brand Values"
@@ -141,12 +141,12 @@ export const AboutPage: React.FC = () => {
           <Stagger3D staggerDelay={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <StaggerItem3D className="flex">
               <Card3D maxTilt={8} depth={16} glare={true} className="w-full flex">
-                <div className="w-full bg-white p-8 rounded-2xl border border-beige shadow-luxury space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-ivory flex items-center justify-center text-gold-dark border border-gold/30">
+                <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-ivory dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light border border-gold/30">
                     <Sparkles className="w-6 h-6" />
                   </div>
-                  <h3 className="font-serif font-bold text-xl text-charcoal">Heritage & Tradition</h3>
-                  <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                  <h3 className="font-serif font-bold text-xl text-charcoal dark:text-ivory">Heritage & Tradition</h3>
+                  <p className="text-sm text-warmgray-dark dark:text-beige/75 leading-relaxed font-light">
                     Jewellery that pays homage to traditional Indian artistry — including Kundan, Polki, Nakshi, and filigree craftsmanship that honors cultural identity.
                   </p>
                 </div>
@@ -155,12 +155,12 @@ export const AboutPage: React.FC = () => {
 
             <StaggerItem3D className="flex">
               <Card3D maxTilt={8} depth={16} glare={true} className="w-full flex">
-                <div className="w-full bg-white p-8 rounded-2xl border border-beige shadow-luxury space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-ivory flex items-center justify-center text-gold-dark border border-gold/30">
+                <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-ivory dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light border border-gold/30">
                     <HeartHandshake className="w-6 h-6" />
                   </div>
-                  <h3 className="font-serif font-bold text-xl text-charcoal">Trust & Relationships</h3>
-                  <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                  <h3 className="font-serif font-bold text-xl text-charcoal dark:text-ivory">Trust & Relationships</h3>
+                  <p className="text-sm text-warmgray-dark dark:text-beige/75 leading-relaxed font-light">
                     A warm, family-oriented showroom environment where clients receive honest guidance, transparent advice, and thoughtful personal recommendations.
                   </p>
                 </div>
@@ -169,12 +169,12 @@ export const AboutPage: React.FC = () => {
 
             <StaggerItem3D className="flex">
               <Card3D maxTilt={8} depth={16} glare={true} className="w-full flex">
-                <div className="w-full bg-white p-8 rounded-2xl border border-beige shadow-luxury space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-ivory flex items-center justify-center text-gold-dark border border-gold/30">
+                <div className="w-full bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-ivory dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light border border-gold/30">
                     <Award className="w-6 h-6" />
                   </div>
-                  <h3 className="font-serif font-bold text-xl text-charcoal">Craftsmanship & Beauty</h3>
-                  <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                  <h3 className="font-serif font-bold text-xl text-charcoal dark:text-ivory">Craftsmanship & Beauty</h3>
+                  <p className="text-sm text-warmgray-dark dark:text-beige/75 leading-relaxed font-light">
                     An uncompromising dedication to balanced proportions, refined finishing, and durable gold settings that retain their majestic grace for lifetimes.
                   </p>
                 </div>
@@ -193,19 +193,19 @@ export const AboutPage: React.FC = () => {
         />
 
         <div className="space-y-6">
-          {milestones.map((m, idx) => (
+          {milestones.map((m) => (
             <div
               key={m.year}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 rounded-2xl bg-white border border-beige shadow-sm"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 rounded-2xl bg-white dark:bg-emerald-surface border border-beige dark:border-white/10 shadow-sm dark:shadow-darkcard"
             >
               <div className="w-20 sm:w-28 flex-shrink-0">
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-gold-dark block">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-gold-dark dark:text-gold-light block">
                   {m.year}
                 </span>
               </div>
               <div className="flex-1 space-y-1">
-                <h4 className="font-serif font-bold text-lg text-charcoal">{m.title}</h4>
-                <p className="text-sm text-warmgray-dark font-light leading-relaxed">{m.desc}</p>
+                <h4 className="font-serif font-bold text-lg text-charcoal dark:text-ivory">{m.title}</h4>
+                <p className="text-sm text-warmgray-dark dark:text-beige/75 font-light leading-relaxed">{m.desc}</p>
               </div>
             </div>
           ))}

@@ -29,7 +29,7 @@ export const ShowroomPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="pt-20 sm:pt-24 pb-20 bg-ivory text-charcoal">
+      <div className="pt-20 sm:pt-24 pb-20 bg-ivory dark:bg-emerald-noir text-charcoal dark:text-ivory transition-colors duration-300">
         {/* Editorial Header */}
       <section className="relative py-16 bg-emerald-dark text-ivory overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C6A15B_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
@@ -52,7 +52,7 @@ export const ShowroomPage: React.FC = () => {
       {/* Showroom Visual & Address Spotlight with 3D Depth */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Scroll3DReveal delay={0.1}>
-          <div className="bg-white rounded-3xl overflow-hidden border border-beige shadow-luxury grid grid-cols-1 lg:grid-cols-12 mb-16">
+          <div className="bg-white dark:bg-emerald-surface rounded-3xl overflow-hidden border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard grid grid-cols-1 lg:grid-cols-12 mb-16">
             <div className="lg:col-span-7 h-80 sm:h-96 lg:h-[480px] relative">
               <Card3D maxTilt={6} depth={20} glare={true} className="w-full h-full">
                 <div className="w-full h-full relative">
@@ -73,21 +73,21 @@ export const ShowroomPage: React.FC = () => {
 
           <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-widest text-gold-dark font-semibold block mb-1">
+              <span className="text-xs uppercase tracking-widest text-gold-dark dark:text-gold-light font-semibold block mb-1">
                 LOCATION DETAILS
               </span>
-              <h2 className="font-serif text-3xl font-bold text-charcoal mb-4">
+              <h2 className="font-serif text-3xl font-bold text-charcoal dark:text-ivory mb-4">
                 Radha Jewellers
               </h2>
 
-              <div className="p-5 rounded-2xl bg-cream/40 border border-beige space-y-2 text-sm text-warmgray-dark">
-                <p className="font-semibold text-charcoal">{siteConfig.address.line1}</p>
-                <p>{siteConfig.address.landmark}</p>
-                <p>
+              <div className="p-5 rounded-2xl bg-cream/40 dark:bg-emerald-midnight/60 border border-beige dark:border-white/10 space-y-2 text-sm text-warmgray-dark dark:text-beige/85">
+                <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
+                <p className="text-warmgray-dark dark:text-beige/75">{siteConfig.address.landmark}</p>
+                <p className="text-warmgray-dark dark:text-beige/75">
                   {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state}, {siteConfig.address.country}
                 </p>
                 {siteConfig.openingHours && (
-                  <p className="pt-2 text-xs font-medium text-charcoal">
+                  <p className="pt-2 text-xs font-medium text-charcoal dark:text-ivory">
                     Hours: {siteConfig.openingHours}
                   </p>
                 )}
@@ -109,7 +109,7 @@ export const ShowroomPage: React.FC = () => {
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href={siteConfig.phoneLink}
-                  className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all"
+                  className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all text-center"
                 >
                   <Phone className="w-3.5 h-3.5 text-gold" />
                   <span>Call Us</span>
@@ -119,7 +119,7 @@ export const ShowroomPage: React.FC = () => {
                   href={getWhatsAppUrl("Hello Radha Jewellers, I would like to schedule a showroom visit.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all"
+                  className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all text-center"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-gold" />
                   <span>WhatsApp</span>
@@ -135,10 +135,10 @@ export const ShowroomPage: React.FC = () => {
           {amenities.map((item) => (
             <StaggerItem3D key={item.title} className="flex">
               <Card3D maxTilt={10} depth={15} glare={true} className="w-full flex">
-                <div className="w-full p-6 rounded-2xl bg-white border border-beige shadow-sm space-y-2">
+                <div className="w-full p-6 rounded-2xl bg-white dark:bg-emerald-surface border border-beige dark:border-white/10 shadow-sm dark:shadow-darkcard space-y-2">
                   <Sparkles className="w-5 h-5 text-gold" />
-                  <h3 className="font-serif font-bold text-lg text-charcoal">{item.title}</h3>
-                  <p className="text-xs text-warmgray-dark font-light leading-relaxed">{item.desc}</p>
+                  <h3 className="font-serif font-bold text-lg text-charcoal dark:text-ivory">{item.title}</h3>
+                  <p className="text-xs text-warmgray-dark dark:text-beige/75 font-light leading-relaxed">{item.desc}</p>
                 </div>
               </Card3D>
             </StaggerItem3D>

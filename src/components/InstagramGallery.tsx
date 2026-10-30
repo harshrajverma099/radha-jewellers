@@ -10,7 +10,7 @@ export const InstagramGallery: React.FC = () => {
   const hasInstagram = Boolean(siteConfig.instagramUrl && siteConfig.instagramUrl.trim().length > 0);
 
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-cream/30 relative" aria-label="Social & Lifestyle Gallery">
+    <section id="gallery" className="py-20 md:py-28 bg-cream/30 dark:bg-emerald-noir/40 relative transition-colors duration-300" aria-label="Social & Lifestyle Gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -24,7 +24,7 @@ export const InstagramGallery: React.FC = () => {
           {galleryData.map((item) => (
             <StaggerItem3D key={item.id} className="flex">
               <Card3D maxTilt={12} depth={18} glare={true} className="w-full h-64 sm:h-72">
-                <div className="w-full h-full group relative rounded-2xl overflow-hidden bg-charcoal border border-beige/80 shadow-luxury cursor-pointer">
+                <div className="w-full h-full group relative rounded-2xl overflow-hidden bg-charcoal border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard cursor-pointer">
                   <img
                     src={item.image}
                     alt={item.caption}

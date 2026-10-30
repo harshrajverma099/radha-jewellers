@@ -13,7 +13,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-ivory text-charcoal font-sans selection:bg-gold selection:text-white flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-ivory dark:bg-emerald-noir text-charcoal dark:text-ivory font-sans selection:bg-gold selection:text-white flex flex-col relative overflow-x-hidden transition-colors duration-300">
       {/* 3D Luxury Stardust Background Canvas */}
       <Background3D />
 

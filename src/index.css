@@ -8,12 +8,19 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   body {
     background-color: #F8F5EF;
     color: #252525;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  html.dark body {
+    background-color: #071813;
+    color: #F8F5EF;
   }
 
   ::selection {
@@ -29,6 +36,10 @@
 
 ::-webkit-scrollbar-track {
   background: #F8F5EF;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #071813;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -65,3 +76,6 @@
   box-shadow: 0 16px 36px -12px rgba(18, 61, 50, 0.12);
 }
 
+html.dark .card-hover-gold:hover {
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(198, 161, 91, 0.2);
+}

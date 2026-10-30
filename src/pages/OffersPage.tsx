@@ -9,7 +9,7 @@ export const OffersPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="pt-20 sm:pt-24 pb-20 bg-ivory text-charcoal">
+      <div className="pt-20 sm:pt-24 pb-20 bg-ivory dark:bg-emerald-noir text-charcoal dark:text-ivory transition-colors duration-300">
         {/* Editorial Header */}
       <section className="relative py-16 bg-emerald-dark text-ivory overflow-hidden">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C6A15B_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
@@ -119,14 +119,14 @@ export const OffersPage: React.FC = () => {
 
       {/* Showroom Visit Invitation */}
       <section className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-beige shadow-luxury space-y-4">
-          <div className="w-12 h-12 rounded-full bg-cream mx-auto flex items-center justify-center text-gold-dark">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-emerald-surface border border-beige dark:border-white/10 shadow-luxury dark:shadow-darkcard space-y-4">
+          <div className="w-12 h-12 rounded-full bg-cream dark:bg-emerald-midnight mx-auto flex items-center justify-center text-gold-dark dark:text-gold-light">
             <MapPin className="w-6 h-6" />
           </div>
-          <h3 className="font-serif text-2xl font-bold text-charcoal">
+          <h3 className="font-serif text-2xl font-bold text-charcoal dark:text-ivory">
             Visit Our Showroom in Hata
           </h3>
-          <p className="text-sm text-warmgray-dark max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-sm text-warmgray-dark dark:text-beige/85 max-w-xl mx-auto font-light leading-relaxed">
             Experience the festive collections in person at {siteConfig.address.fullFormatted}.
           </p>
           <div className="pt-2">

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Phone, MessageCircle, MapPin, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, X, ArrowRight, Sparkles, Sun, Moon } from 'lucide-react';
 import { siteConfig, getWhatsAppUrl, trackEvent } from '../data/siteConfig';
+import { useTheme } from '../context/ThemeContext';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+  const { theme, toggleTheme, setTheme } = useTheme();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -57,23 +60,23 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       />
 
       {/* Drawer panel */}
-      <div className="relative w-full max-w-xs sm:max-w-sm bg-ivory h-full shadow-2xl flex flex-col justify-between overflow-y-auto border-l border-beige">
+      <div className="relative w-full max-w-xs sm:max-w-sm bg-ivory dark:bg-emerald-noir h-full shadow-2xl flex flex-col justify-between overflow-y-auto border-l border-beige dark:border-white/10 transition-colors duration-300">
         {/* Header inside drawer */}
-        <div className="p-5 border-b border-beige flex items-center justify-between bg-cream/40">
+        <div className="p-5 border-b border-beige dark:border-white/10 flex items-center justify-between bg-cream/40 dark:bg-emerald-midnight/70">
           <Link to="/" onClick={onClose} className="flex items-center gap-2.5">
             <img
               src="/images/radha-jewellers-logo.png"
               alt="Radha Jewellers"
-              className="h-9 w-auto object-contain"
+              className="h-9 w-auto object-contain dark:brightness-110"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = '/images/radha-jewellers-logo.svg';
               }}
             />
             <div>
-              <span className="font-serif font-bold text-base tracking-wider block text-charcoal">
+              <span className="font-serif font-bold text-base tracking-wider block text-charcoal dark:text-ivory">
                 RADHA JEWELLERS
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-gold-dark font-medium block">
+              <span className="text-[9px] uppercase tracking-widest text-gold-dark dark:text-gold-light font-medium block">
                 SINCE 2003
               </span>
             </div>
@@ -81,15 +84,49 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-beige/60 text-charcoal focus:outline-none focus:ring-2 focus:ring-gold"
+            className="p-2 rounded-full hover:bg-beige/60 dark:hover:bg-white/10 text-charcoal dark:text-ivory focus:outline-none focus:ring-2 focus:ring-gold"
             aria-label="Close navigation menu"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
+        {/* Theme Preference Bar */}
+        <div className="px-5 pt-4 pb-2">
+          <div className="flex items-center justify-between p-2 rounded-xl bg-cream/50 dark:bg-emerald-surface/60 border border-beige/60 dark:border-white/10">
+            <span className="text-xs uppercase tracking-wider font-medium text-charcoal dark:text-ivory flex items-center gap-1.5 pl-1">
+              {theme === 'dark' ? <Moon className="w-3.5 h-3.5 text-gold-light" /> : <Sun className="w-3.5 h-3.5 text-gold-dark" />}
+              Theme
+            </span>
+            <div className="flex items-center gap-1 bg-white/70 dark:bg-emerald-midnight/80 p-0.5 rounded-lg border border-beige/40 dark:border-white/10">
+              <button
+                onClick={() => setTheme('light')}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                  theme === 'light'
+                    ? 'bg-gold text-white shadow-sm'
+                    : 'text-charcoal/70 dark:text-ivory/70 hover:text-charcoal'
+                }`}
+              >
+                <Sun className="w-3 h-3" />
+                <span>Light</span>
+              </button>
+              <button
+                onClick={() => setTheme('dark')}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
+                  theme === 'dark'
+                    ? 'bg-gold text-white shadow-sm'
+                    : 'text-charcoal/70 dark:text-ivory/70 hover:text-ivory'
+                }`}
+              >
+                <Moon className="w-3 h-3" />
+                <span>Dark</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Links list */}
-        <div className="px-5 py-6 space-y-1">
+        <div className="px-5 py-4 space-y-1">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -101,8 +138,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               className={({ isActive }) =>
                 `flex items-center justify-between px-3.5 py-3 rounded-xl transition-all font-medium text-base group ${
                   isActive
-                    ? 'bg-cream text-gold-dark font-semibold border-l-4 border-gold'
-                    : 'text-charcoal hover:text-gold-dark hover:bg-cream/60'
+                    ? 'bg-cream dark:bg-emerald-surface text-gold-dark dark:text-gold-light font-semibold border-l-4 border-gold'
+                    : 'text-charcoal dark:text-ivory/85 hover:text-gold-dark dark:hover:text-gold-light hover:bg-cream/60 dark:hover:bg-emerald-surface/40'
                 }`
               }
             >
@@ -116,7 +153,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Bottom Contact Actions */}
-        <div className="p-5 border-t border-beige bg-cream/30 space-y-3">
+        <div className="p-5 border-t border-beige dark:border-white/10 bg-cream/30 dark:bg-emerald-midnight/60 space-y-3">
           <a
             href={getWhatsAppUrl('Hello Radha Jewellers, I would like to enquire about your jewellery.')}
             target="_blank"
@@ -132,7 +169,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             <a
               href={siteConfig.phoneLink}
               onClick={() => trackEvent('mobile_menu_call_click')}
-              className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-beige bg-white text-charcoal hover:border-gold hover:text-gold-dark text-xs font-medium"
+              className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-beige dark:border-white/15 bg-white dark:bg-emerald-surface text-charcoal dark:text-ivory hover:border-gold hover:text-gold-dark dark:hover:text-gold-light text-xs font-medium transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-gold" />
               <span>Call Showroom</span>
@@ -143,15 +180,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('mobile_menu_directions_click')}
-              className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-beige bg-white text-charcoal hover:border-gold hover:text-gold-dark text-xs font-medium"
+              className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-beige dark:border-white/15 bg-white dark:bg-emerald-surface text-charcoal dark:text-ivory hover:border-gold hover:text-gold-dark dark:hover:text-gold-light text-xs font-medium transition-colors"
             >
               <MapPin className="w-3.5 h-3.5 text-gold" />
               <span>Get Directions</span>
             </a>
           </div>
 
-          <div className="pt-2 text-center text-[11px] text-warmgray">
-            <p className="font-serif text-charcoal font-semibold text-xs mb-0.5">Radha Jewellers • Hata</p>
+          <div className="pt-2 text-center text-[11px] text-warmgray dark:text-beige/70">
+            <p className="font-serif text-charcoal dark:text-ivory font-semibold text-xs mb-0.5">Radha Jewellers • Hata</p>
             <p>{siteConfig.address.landmark}, {siteConfig.address.city}</p>
           </div>
         </div>

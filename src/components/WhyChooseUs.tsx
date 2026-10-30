@@ -29,7 +29,7 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20 md:py-28 bg-cream/30 relative" aria-label="Why Choose Radha Jewellers">
+    <section id="why-us" className="py-20 md:py-28 bg-cream/30 dark:bg-emerald-noir/40 relative transition-colors duration-300" aria-label="Why Choose Radha Jewellers">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -45,28 +45,28 @@ export const WhyChooseUs: React.FC = () => {
             return (
               <StaggerItem3D key={item.title} className="flex">
                 <Card3D maxTilt={10} depth={16} glare={true} className="w-full flex">
-                  <div className="w-full relative bg-white p-8 rounded-2xl border border-beige/80 shadow-luxury flex flex-col justify-between">
+                  <div className="w-full relative bg-white dark:bg-emerald-surface p-8 rounded-2xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col justify-between">
                     {/* Number Watermark */}
-                    <span className="absolute top-4 right-6 font-serif text-4xl font-bold text-cream select-none">
+                    <span className="absolute top-4 right-6 font-serif text-4xl font-bold text-cream dark:text-emerald-midnight/80 select-none">
                       0{index + 1}
                     </span>
 
                     <div>
                       {/* Icon */}
-                      <div className="w-12 h-12 rounded-xl bg-ivory border border-gold/30 flex items-center justify-center text-gold-dark mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-ivory dark:bg-emerald-midnight border border-gold/30 flex items-center justify-center text-gold-dark dark:text-gold-light mb-6">
                         <Icon className="w-6 h-6" />
                       </div>
 
-                      <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                      <h3 className="font-serif text-xl font-bold text-charcoal dark:text-ivory mb-3">
                         {item.title}
                       </h3>
 
-                      <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                      <p className="text-sm text-warmgray-dark dark:text-beige/85 leading-relaxed font-light">
                         {item.description}
                       </p>
                     </div>
 
-                    <div className="pt-6 mt-6 border-t border-beige/50 flex items-center gap-2 text-xs text-gold-dark uppercase tracking-wider font-semibold">
+                    <div className="pt-6 mt-6 border-t border-beige/50 dark:border-white/10 flex items-center gap-2 text-xs text-gold-dark dark:text-gold-light uppercase tracking-wider font-semibold">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                       <span>Showroom Value</span>
                     </div>

@@ -6,7 +6,7 @@ import { Sparkles } from 'lucide-react';
 export const CollectionsPage: React.FC = () => {
   return (
     <Layout>
-      <div className="pt-20 sm:pt-24 pb-20 bg-ivory text-charcoal">
+      <div className="pt-20 sm:pt-24 pb-20 bg-ivory dark:bg-emerald-noir text-charcoal dark:text-ivory transition-colors duration-300">
         {/* Editorial Header */}
         <section className="relative py-16 bg-emerald-dark text-ivory overflow-hidden">
           <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C6A15B_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />

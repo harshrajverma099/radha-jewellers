@@ -57,7 +57,7 @@ export const Collections: React.FC = () => {
   });
 
   return (
-    <section id="collections" className="py-20 md:py-28 bg-cream/40 relative" aria-label="Our Collections">
+    <section id="collections" className="py-20 md:py-28 bg-cream/40 dark:bg-emerald-noir/40 relative transition-colors duration-300" aria-label="Our Collections">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -74,8 +74,8 @@ export const Collections: React.FC = () => {
               onClick={() => setActiveFilter(filter.value)}
               className={`px-5 py-2 text-xs sm:text-sm font-medium rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-gold ${
                 activeFilter === filter.value
-                  ? 'bg-emerald text-ivory shadow-sm'
-                  : 'bg-white text-charcoal border border-beige hover:border-gold hover:text-gold-dark'
+                  ? 'bg-emerald dark:bg-gold text-ivory dark:text-charcoal shadow-sm'
+                  : 'bg-white dark:bg-emerald-surface text-charcoal dark:text-ivory border border-beige dark:border-white/10 hover:border-gold hover:text-gold-dark dark:hover:text-gold-light'
               }`}
             >
               {filter.label}
@@ -103,7 +103,7 @@ export const Collections: React.FC = () => {
                   }}
                 >
                   <div
-                    className="w-full h-full group relative bg-white rounded-2xl overflow-hidden border border-beige/80 shadow-luxury cursor-pointer flex flex-col justify-between"
+                    className="w-full h-full group relative bg-white dark:bg-emerald-surface rounded-2xl overflow-hidden border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard cursor-pointer flex flex-col justify-between"
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => {
@@ -131,8 +131,8 @@ export const Collections: React.FC = () => {
                       </div>
 
                       {/* Corner Arrow Icon on Hover */}
-                      <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/95 text-charcoal flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all shadow-md">
-                        <ArrowUpRight className="w-4 h-4 text-gold-dark" />
+                      <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/95 dark:bg-emerald-midnight text-charcoal dark:text-ivory flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all shadow-md">
+                        <ArrowUpRight className="w-4 h-4 text-gold-dark dark:text-gold-light" />
                       </div>
 
                       {/* Floating Title on bottom of image */}
@@ -147,12 +147,12 @@ export const Collections: React.FC = () => {
                     </div>
 
                     {/* Card Bottom: Description & Quick Action */}
-                    <div className="p-5 flex-1 flex flex-col justify-between bg-white">
-                      <p className="text-sm text-warmgray-dark line-clamp-2 leading-relaxed mb-4">
+                    <div className="p-5 flex-1 flex flex-col justify-between bg-white dark:bg-emerald-surface">
+                      <p className="text-sm text-warmgray-dark dark:text-beige/85 line-clamp-2 leading-relaxed mb-4">
                         {item.description}
                       </p>
 
-                      <div className="flex items-center justify-between pt-3 border-t border-beige/60 text-xs font-semibold uppercase tracking-wider text-gold-dark group-hover:text-charcoal transition-colors">
+                      <div className="flex items-center justify-between pt-3 border-t border-beige/60 dark:border-white/10 text-xs font-semibold uppercase tracking-wider text-gold-dark dark:text-gold-light group-hover:text-charcoal dark:group-hover:text-ivory transition-colors">
                         <span>Explore Collection</span>
                         <span className="text-sm">→</span>
                       </div>
@@ -173,7 +173,7 @@ export const Collections: React.FC = () => {
             <span>View Complete Collections Catalog</span>
             <ArrowRight className="w-4 h-4 text-gold-light" />
           </Link>
-          <p className="mt-4 text-xs text-warmgray">
+          <p className="mt-4 text-xs text-warmgray dark:text-beige/70">
             * All collections are showcased for brand discovery and design consultation at our Hata showroom. We invite you to experience craftsmanship in person.
           </p>
         </div>
@@ -194,7 +194,7 @@ export const Collections: React.FC = () => {
           />
 
           {/* Modal Container */}
-          <div className="relative w-full max-w-3xl bg-ivory rounded-2xl overflow-hidden shadow-2xl border border-beige z-10 max-h-[90vh] flex flex-col md:flex-row">
+          <div className="relative w-full max-w-3xl bg-ivory dark:bg-emerald-surface rounded-2xl overflow-hidden shadow-2xl border border-beige dark:border-white/10 z-10 max-h-[90vh] flex flex-col md:flex-row">
             {/* Close Button */}
             <button
               onClick={() => setSelectedCollection(null)}
@@ -222,27 +222,27 @@ export const Collections: React.FC = () => {
             {/* Right: Content & Action */}
             <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
               <div>
-                <p className="text-xs uppercase tracking-widestluxury text-gold-dark font-semibold mb-1">
+                <p className="text-xs uppercase tracking-widestluxury text-gold-dark dark:text-gold-light font-semibold mb-1">
                   RADHA JEWELLERS COLLECTION
                 </p>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal dark:text-ivory mb-2">
                   {selectedCollection.name}
                 </h3>
-                <p className="text-sm text-gold-dark font-medium italic mb-4">
+                <p className="text-sm text-gold-dark dark:text-gold-light font-medium italic mb-4">
                   {selectedCollection.subtitle}
                 </p>
 
-                <p className="text-sm text-warmgray-dark leading-relaxed mb-6 font-light">
+                <p className="text-sm text-warmgray-dark dark:text-beige/85 leading-relaxed mb-6 font-light">
                   {selectedCollection.description}
                 </p>
 
                 {/* Highlights List */}
                 <div className="space-y-2.5 mb-6">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-charcoal">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-charcoal dark:text-ivory">
                     Craftsmanship Highlights:
                   </p>
                   {selectedCollection.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-warmgray-dark">
+                    <div key={idx} className="flex items-center gap-2 text-xs text-warmgray-dark dark:text-beige/75">
                       <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
                       <span>{highlight}</span>
                     </div>
@@ -251,7 +251,7 @@ export const Collections: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-beige space-y-2.5">
+              <div className="pt-4 border-t border-beige dark:border-white/10 space-y-2.5">
                 {/* 3D Action if available for this category */}
                 {(() => {
                   const matching3d = models3dData.find(
@@ -290,7 +290,7 @@ export const Collections: React.FC = () => {
                   <span>Enquire About This Collection</span>
                 </a>
 
-                <p className="text-center text-[11px] text-warmgray">
+                <p className="text-center text-[11px] text-warmgray dark:text-beige/70">
                   Visit our showroom in Hata, Kushinagar to explore full designs in person.
                 </p>
               </div>

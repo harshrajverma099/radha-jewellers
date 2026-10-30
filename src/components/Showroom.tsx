@@ -8,7 +8,7 @@ import { siteConfig, getWhatsAppUrl, trackEvent } from '../data/siteConfig';
 
 export const Showroom: React.FC = () => {
   return (
-    <section id="showroom" className="py-20 md:py-28 bg-cream/40 relative" aria-label="Our Showroom">
+    <section id="showroom" className="py-20 md:py-28 bg-cream/40 dark:bg-emerald-noir/40 relative transition-colors duration-300" aria-label="Our Showroom">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
@@ -19,7 +19,7 @@ export const Showroom: React.FC = () => {
 
         {/* Editorial Composition: Architecture Image + Showroom Details in 3D */}
         <Scroll3DReveal delay={0.15}>
-          <div className="bg-white rounded-3xl overflow-hidden border border-beige/80 shadow-luxury grid grid-cols-1 lg:grid-cols-12">
+          <div className="bg-white dark:bg-emerald-surface rounded-3xl overflow-hidden border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard grid grid-cols-1 lg:grid-cols-12">
             {/* Left Column: Showroom Interior Showcase with 3D Tilt */}
             <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-auto min-h-[380px] bg-charcoal">
               <Card3D maxTilt={5} depth={16} glare={true} className="w-full h-full">
@@ -49,28 +49,28 @@ export const Showroom: React.FC = () => {
             </div>
 
             {/* Right Column: Address & Direct Actions */}
-            <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between bg-white">
+            <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between bg-white dark:bg-emerald-surface">
             <div className="space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-widestluxury text-gold-dark font-semibold mb-2">
+                <p className="text-xs uppercase tracking-widestluxury text-gold-dark dark:text-gold-light font-semibold mb-2">
                   CONVENIENT LOCATION
                 </p>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal leading-tight mb-3">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal dark:text-ivory leading-tight mb-3">
                   Radha Jewellers
                 </h3>
-                <p className="text-sm text-warmgray-dark leading-relaxed font-light">
+                <p className="text-sm text-warmgray-dark dark:text-beige/85 leading-relaxed font-light">
                   Located prominently in the heart of Hata on Main Road, easily accessible for visitors across Kushinagar and neighbouring districts.
                 </p>
               </div>
 
               {/* Address Card */}
-              <div className="p-5 rounded-2xl bg-cream/40 border border-beige/80 space-y-3">
+              <div className="p-5 rounded-2xl bg-cream/40 dark:bg-emerald-midnight/60 border border-beige/80 dark:border-white/10 space-y-3">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-gold-dark flex-shrink-0 mt-0.5" />
-                  <div className="text-xs sm:text-sm text-charcoal leading-relaxed">
-                    <p className="font-semibold text-charcoal">{siteConfig.address.line1}</p>
-                    <p className="text-warmgray-dark">{siteConfig.address.landmark}</p>
-                    <p className="text-warmgray-dark">
+                  <MapPin className="w-5 h-5 text-gold-dark dark:text-gold-light flex-shrink-0 mt-0.5" />
+                  <div className="text-xs sm:text-sm text-charcoal dark:text-ivory leading-relaxed">
+                    <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
+                    <p className="text-warmgray-dark dark:text-beige/75">{siteConfig.address.landmark}</p>
+                    <p className="text-warmgray-dark dark:text-beige/75">
                       {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state}, {siteConfig.address.country}
                     </p>
                   </div>
@@ -78,7 +78,7 @@ export const Showroom: React.FC = () => {
 
                 {/* Opening Hours (only displayed if verified and configured) */}
                 {siteConfig.openingHours && (
-                  <div className="flex items-center gap-2.5 pt-3 border-t border-beige text-xs text-warmgray-dark">
+                  <div className="flex items-center gap-2.5 pt-3 border-t border-beige dark:border-white/10 text-xs text-warmgray-dark dark:text-beige/75">
                     <Clock className="w-4 h-4 text-gold flex-shrink-0" />
                     <span>{siteConfig.openingHours}</span>
                   </div>
@@ -86,13 +86,13 @@ export const Showroom: React.FC = () => {
               </div>
 
               {/* Contact Reference */}
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-charcoal">
-                <div className="w-8 h-8 rounded-full bg-cream flex items-center justify-center text-gold-dark">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-charcoal dark:text-ivory">
+                <div className="w-8 h-8 rounded-full bg-cream dark:bg-emerald-midnight flex items-center justify-center text-gold-dark dark:text-gold-light">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="block text-[11px] text-warmgray uppercase tracking-wider">Showroom Helpline</span>
-                  <a href={siteConfig.phoneLink} className="font-semibold text-charcoal hover:text-gold-dark transition-colors">
+                  <span className="block text-[11px] text-warmgray dark:text-beige/70 uppercase tracking-wider">Showroom Helpline</span>
+                  <a href={siteConfig.phoneLink} className="font-semibold text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light transition-colors">
                     {siteConfig.phoneDisplay}
                   </a>
                 </div>
@@ -124,7 +124,7 @@ export const Showroom: React.FC = () => {
                 <a
                   href={siteConfig.phoneLink}
                   onClick={() => trackEvent('showroom_call_click')}
-                  className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all text-center"
+                  className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all text-center"
                 >
                   <Phone className="w-3.5 h-3.5 text-gold" />
                   <span>Call Now</span>
@@ -135,7 +135,7 @@ export const Showroom: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent('showroom_whatsapp_click')}
-                  className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-full border border-beige hover:border-gold bg-cream/30 text-charcoal hover:text-gold-dark font-medium text-xs uppercase tracking-wider transition-all text-center"
+                  className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all text-center"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-gold" />
                   <span>WhatsApp</span>

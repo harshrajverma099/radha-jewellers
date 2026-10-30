@@ -12,11 +12,11 @@ export const JewelleryExperienceSection: React.FC = () => {
   return (
     <section
       id="experience3d"
-      className="py-20 md:py-28 bg-ivory relative overflow-hidden"
+      className="py-20 md:py-28 bg-ivory dark:bg-emerald-noir relative overflow-hidden transition-colors duration-300"
       aria-label="Interactive 3D Jewellery Experience"
     >
       {/* Decorative Gold Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/5 dark:bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
@@ -35,51 +35,51 @@ export const JewelleryExperienceSection: React.FC = () => {
         </div>
 
         {/* Informative Editorial Details Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white p-8 sm:p-10 rounded-3xl border border-beige/80 shadow-luxury">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white dark:bg-emerald-surface p-8 sm:p-10 rounded-3xl border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard">
           {/* Left: Model Narrative */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase tracking-widest text-gold-dark font-medium bg-cream/60">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase tracking-widest text-gold-dark dark:text-gold-light font-medium bg-cream/60 dark:bg-emerald-midnight/60">
               <Compass className="w-3.5 h-3.5 text-gold" />
               <span>DESIGN INSPECTION • {activeModel.category}</span>
             </div>
 
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal dark:text-ivory">
               {activeModel.name}
             </h3>
 
-            <p className="text-base text-warmgray-dark leading-relaxed font-light">
+            <p className="text-base text-warmgray-dark dark:text-beige/85 leading-relaxed font-light">
               {activeModel.description}
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-4 text-xs text-charcoal">
-              <div className="p-3 rounded-xl bg-cream/40 border border-beige flex items-center gap-2.5">
+            <div className="pt-2 flex flex-wrap gap-4 text-xs text-charcoal dark:text-ivory">
+              <div className="p-3 rounded-xl bg-cream/40 dark:bg-emerald-midnight/60 border border-beige dark:border-white/10 flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-gold" />
-                <span className="font-medium text-warmgray-dark">Metal:</span>
+                <span className="font-medium text-warmgray-dark dark:text-beige/70">Metal:</span>
                 <span className="font-semibold">{activeModel.metalType}</span>
               </div>
 
-              <div className="p-3 rounded-xl bg-cream/40 border border-beige flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-emerald" />
-                <span className="font-medium text-warmgray-dark">Stone Setting:</span>
+              <div className="p-3 rounded-xl bg-cream/40 dark:bg-emerald-midnight/60 border border-beige dark:border-white/10 flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-emerald dark:bg-gold-light" />
+                <span className="font-medium text-warmgray-dark dark:text-beige/70">Stone Setting:</span>
                 <span className="font-semibold">{activeModel.gemstone}</span>
               </div>
             </div>
           </div>
 
           {/* Right: Showroom Guidance & Authenticity Guarantee */}
-          <div className="lg:col-span-5 p-6 rounded-2xl bg-cream/30 border border-beige space-y-4">
-            <div className="flex items-center gap-2 text-gold-dark font-serif font-bold text-lg">
+          <div className="lg:col-span-5 p-6 rounded-2xl bg-cream/30 dark:bg-emerald-midnight/50 border border-beige dark:border-white/10 space-y-4">
+            <div className="flex items-center gap-2 text-gold-dark dark:text-gold-light font-serif font-bold text-lg">
               <Sparkles className="w-5 h-5 text-gold" />
               <span>Experience in Person</span>
             </div>
 
-            <p className="text-xs text-warmgray-dark leading-relaxed">
+            <p className="text-xs text-warmgray-dark dark:text-beige/75 leading-relaxed">
               * This real-time 3D showcase offers an interactive architectural exploration of jewellery aesthetics and forms. Real creations feature unique artisanal nuances that can be appreciated firsthand at our showroom.
             </p>
 
-            <div className="pt-2 border-t border-beige/80 flex items-center justify-between text-xs">
-              <span className="text-warmgray font-medium">Showroom Location:</span>
-              <span className="font-semibold text-charcoal">Hata, Kushinagar</span>
+            <div className="pt-2 border-t border-beige/80 dark:border-white/10 flex items-center justify-between text-xs">
+              <span className="text-warmgray dark:text-beige/70 font-medium">Showroom Location:</span>
+              <span className="font-semibold text-charcoal dark:text-ivory">Hata, Kushinagar</span>
             </div>
 
             <div className="pt-2 flex flex-col gap-2.5">
