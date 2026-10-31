@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/Hero';
 import { About } from '../components/About';
+import { ModelFilmsShowcase } from '../components/ModelFilmsShowcase';
 import { JewelleryExperienceSection } from '../components/JewelleryExperienceSection';
 import { Collections } from '../components/Collections';
 import { FeaturedJewellery } from '../components/FeaturedJewellery';
@@ -16,40 +17,43 @@ import { Contact } from '../components/Contact';
 export const Home: React.FC = () => {
   return (
     <Layout>
-      {/* 1. Hero Section */}
+      {/* 1. Cinematic Model Video Hero */}
       <Hero />
 
       {/* 2. Brand Story & Heritage */}
       <About />
 
-      {/* 3. The 3D Jewellery Experience */}
+      {/* 3. Elegance in Motion — Real Model Jewellery Films */}
+      <ModelFilmsShowcase />
+
+      {/* 4. The 3D Jewellery Experience */}
       <JewelleryExperienceSection />
 
-      {/* 4. Discover Collections */}
+      {/* 5. Discover Collections */}
       <Collections />
 
-      {/* 5. Festive Promotional Offers */}
+      {/* 6. Festive Promotional Offers */}
       <Offers />
 
-      {/* 6. Featured Jewellery Showcase */}
+      {/* 7. Featured Jewellery Showcase */}
       <FeaturedJewellery />
 
-      {/* 7. Why Choose Us / Brand Values */}
+      {/* 8. Why Choose Us / Brand Values */}
       <WhyChooseUs />
 
-      {/* 8. Showroom Experience */}
+      {/* 9. Showroom Experience */}
       <Showroom />
 
-      {/* 9. Google Maps & Directions */}
+      {/* 10. Google Maps & Directions */}
       <MapSection />
 
-      {/* 10. Stories of Trust */}
+      {/* 11. Stories of Trust */}
       <Testimonials />
 
-      {/* 11. Instagram & Social Gallery */}
+      {/* 12. Instagram & Social Gallery */}
       <InstagramGallery />
 
-      {/* 12. Direct Contact & Enquiry */}
+      {/* 13. Direct Contact & Enquiry */}
       <Contact />
     </Layout>
   );

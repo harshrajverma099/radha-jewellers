@@ -1,29 +1,119 @@
-import React from 'react';
-import { ArrowRight, MapPin, Sparkles } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { ArrowRight, MapPin, Sparkles, Play, Pause, Film } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Floating3D, Scroll3DReveal } from './Motion3D';
+import { Floating3D } from './Motion3D';
 import { trackEvent } from '../data/siteConfig';
 
+interface HeroScene {
+  id: string;
+  name: string;
+  badge: string;
+  desktopSrc: string;
+  mobileSrc: string;
+  poster: string;
+}
+
+const heroScenes: HeroScene[] = [
+  {
+    id: 'royal-bridal',
+    name: 'Royal Bridal Trousseau',
+    badge: '22K Heirloom Gold',
+    desktopSrc: '/videos/optimized/hero-royal-bridal.mp4',
+    mobileSrc: '/videos/optimized/hero-mobile-portrait.mp4',
+    poster: '/images/posters/hero-royal-bridal-poster.webp',
+  },
+  {
+    id: 'classic-gold',
+    name: 'Imperial Kundan & Polki',
+    badge: 'Traditional Craft',
+    desktopSrc: '/videos/optimized/model-film-classic-gold.mp4',
+    mobileSrc: '/videos/optimized/hero-mobile-portrait.mp4',
+    poster: '/images/posters/model-film-classic-gold-poster.webp',
+  },
+  {
+    id: 'contemporary',
+    name: 'Contemporary Solitaires',
+    badge: 'Diamond Splendour',
+    desktopSrc: '/videos/optimized/model-film-contemporary.mp4',
+    mobileSrc: '/videos/optimized/hero-mobile-portrait.mp4',
+    poster: '/images/posters/model-film-contemporary-poster.webp',
+  },
+];
+
 export const Hero: React.FC = () => {
+  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const activeScene = heroScenes[activeSceneIndex];
+
+  // Screen size check for vertical mobile video
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Update video playback when scene changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {
+        // Autoplay may be restricted by some mobile browser power-saving modes
+      });
+      setIsPlaying(true);
+    }
+  }, [activeSceneIndex, isMobile]);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center bg-emerald-dark overflow-hidden pt-24 pb-16 lg:py-0"
+      className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center bg-emerald-dark overflow-hidden pt-24 pb-16 lg:py-0"
       aria-label="Hero Section"
     >
-      {/* Background Cinematic Image with Luxury Dark Emerald Gradient Overlay */}
+      {/* Real Model Jewellery Video Background */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero/hero-jewellery.jpg"
-          alt="Opulent 22k Indian Bridal Gold Jewellery by Radha Jewellers"
-          className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out"
-          loading="eager"
-          fetchPriority="high"
-        />
+        <video
+          ref={videoRef}
+          key={`${activeScene.id}-${isMobile ? 'mobile' : 'desktop'}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={activeScene.poster}
+          className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
+        >
+          <source
+            src={isMobile ? activeScene.mobileSrc : activeScene.desktopSrc}
+            type="video/mp4"
+          />
+          {/* Fallback image */}
+          <img
+            src="/images/hero/hero-jewellery.jpg"
+            alt="Radha Jewellers Luxury Bridal Jewellery"
+            className="w-full h-full object-cover"
+          />
+        </video>
+
         {/* Multilayered radial and linear dark gradient for impeccable text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-dark/95 via-emerald-dark/80 to-emerald-dark/60 lg:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-dark via-transparent to-black/40" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-emerald-dark/90 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-dark/95 via-emerald-dark/75 to-emerald-dark/40 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-dark via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/25 to-emerald-dark/80 pointer-events-none" />
       </div>
 
       {/* Decorative Gold Radial Glow */}
@@ -34,7 +124,7 @@ export const Hero: React.FC = () => {
         <div className="max-w-2xl lg:max-w-3xl">
           {/* 3D Floating Heritage Badge */}
           <Floating3D amplitude={6} duration={5} className="inline-block mb-6">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-gold/40 shadow-luxury">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-gold/40 shadow-luxury">
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
               <span className="text-xs sm:text-sm font-medium tracking-widestluxury uppercase text-gold-light">
                 SINCE 2003 • HATA, KUSHINAGAR
@@ -44,19 +134,19 @@ export const Hero: React.FC = () => {
 
           {/* Brand Signature */}
           <div className="mb-3">
-            <h2 className="text-sm sm:text-base uppercase tracking-ultrawide font-medium text-beige/80">
+            <h2 className="text-sm sm:text-base uppercase tracking-ultrawide font-medium text-beige/85">
               RADHA JEWELLERS
             </h2>
           </div>
 
-          {/* Primary Headline with 3D Depth */}
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-ivory tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
+          {/* Primary Headline */}
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-ivory tracking-tight leading-[1.08] mb-6 drop-shadow-md">
             An Eternal Legacy of <span className="text-gold-gradient italic font-normal">Elegance.</span>
           </h1>
 
           {/* Supporting Copy */}
           <p className="text-base sm:text-lg md:text-xl text-beige/90 leading-relaxed font-light mb-8 max-w-xl">
-            Discover timeless jewellery inspired by Indian tradition, thoughtful craftsmanship and the beauty of life’s most cherished moments.
+            Discover timeless jewellery inspired by Indian tradition, thoughtful craftsmanship and the beauty of life’s most cherished celebrations.
           </p>
 
           {/* Primary & Secondary Call to Actions */}
@@ -89,22 +179,47 @@ export const Hero: React.FC = () => {
             </Link>
           </div>
 
-          {/* Subtle Heritage & Trust Bar */}
-          <div className="pt-6 border-t border-white/15 flex flex-wrap items-center gap-y-3 gap-x-8 text-xs text-beige/80">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-gold" />
-              <span>Celebrating timeless beauty since 2003</span>
+          {/* Interactive Model Video Film Switcher */}
+          <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 sm:pb-0">
+              <span className="text-[11px] uppercase tracking-widest text-gold-light font-medium mr-1 flex items-center gap-1.5 flex-shrink-0">
+                <Film className="w-3.5 h-3.5" />
+                <span>Model Film:</span>
+              </span>
+              {heroScenes.map((scene, idx) => (
+                <button
+                  key={scene.id}
+                  onClick={() => {
+                    setActiveSceneIndex(idx);
+                    trackEvent('hero_scene_switch', { scene: scene.name });
+                  }}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                    activeSceneIndex === idx
+                      ? 'bg-gold text-white shadow-goldglow'
+                      : 'bg-black/40 text-ivory/80 hover:text-gold-light border border-white/15 hover:border-gold/40'
+                  }`}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                  <span>{scene.name}</span>
+                </button>
+              ))}
             </div>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold/60" />
-              <span>Showroom at Hata Main Road, Kushinagar</span>
-            </div>
+
+            {/* Video Play/Pause toggle */}
+            <button
+              onClick={togglePlay}
+              className="p-2 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-ivory hover:text-gold-light transition-colors"
+              title={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
+              aria-label={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
+            >
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Bottom section gradient blend */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory dark:from-emerald-noir to-transparent pointer-events-none transition-colors duration-300" />
     </section>
   );
 };
