@@ -27,3 +27,4 @@ dist-ssr
 model videos/
 public/images/video-previews/
 
+.vercel
