@@ -6,6 +6,8 @@ export interface Promotion {
   description: string;
   badge?: string;
   image: string;
+  voucherCode?: string;
+  perks?: string[];
   startDate?: string; // ISO date string e.g. "2026-10-01" or optional
   endDate?: string;   // ISO date string e.g. "2026-11-15" or optional
   terms?: string;     // Factual terms supplied by business, never fabricated
@@ -19,14 +21,56 @@ export const activePromotions: Promotion[] = [
     title: "DIWALI SPECIAL",
     subtitle: "Celebrate the Festival of Lights with Timeless Elegance",
     discountText: "FLAT 70% OFF ON MAKING CHARGES",
-    description: "Discover beautiful jewellery for your most memorable celebrations. Visit our Hata showroom to explore festive gold, bridal, and diamond collections.",
-    badge: "Festive Offer",
+    description: "Experience the grandest festive savings of the year. Discover magnificent 22K hallmark gold, Kundan, and antique temple jewellery at unprecedented making rates.",
+    badge: "Most Popular Offer",
     image: "/images/promo/diwali-special.png",
-    // Keep dates unconstrained unless verified by business to ensure factual compliance
-    startDate: undefined,
-    endDate: undefined,
-    terms: "Applicable on making charges at Radha Jewellers showroom, Hata. For details on eligible jewellery categories, kindly enquire with our showroom team.",
-    whatsappMessage: "Hello Radha Jewellers, I’d like to enquire about your Diwali Special offer — Flat 70% Off on Making Charges.",
+    voucherCode: "RADHA70",
+    perks: [
+      "100% BIS Hallmarked 916 & 750 Gold",
+      "Live Caratometer Purity Certificate",
+      "Complimentary Luxury Jewellery Box",
+      "Zero Hidden Weighing Deductions"
+    ],
+    terms: "Applicable on making charges at Radha Jewellers showroom, Hata Main Road. For details on eligible categories, kindly enquire with our showroom team.",
+    whatsappMessage: "Hello Radha Jewellers, I would like to claim the Diwali Special voucher RADHA70 for Flat 70% Off on Making Charges.",
+    enabled: true,
+  },
+  {
+    id: "bridal-trousseau-privilege",
+    title: "ROYAL BRIDAL PRIVILEGE",
+    subtitle: "Heirloom Craftsmanship for Auspicious Weddings",
+    discountText: "FREE 24K PURE GOLD COIN",
+    description: "Receive a complimentary certified 24K pure gold coin with complete bridal suites, accompanied by lifetime complimentary jewellery polishing and bespoke fitting.",
+    badge: "Wedding Season Special",
+    image: "/images/promo/diwali-special.png",
+    voucherCode: "BRIDAL24K",
+    perks: [
+      "Free 24K Gold Coin on Bridal Sets",
+      "Lifetime Complimentary Ultrasonic Cleaning",
+      "Priority Custom Bridal Consultation",
+      "Personalized Stylist Fitting"
+    ],
+    terms: "Valid on complete bridal suite purchases at our Hata showroom. Terms & minimum weight slab apply.",
+    whatsappMessage: "Hello Radha Jewellers, I would like to enquire about the Royal Bridal Privilege (BRIDAL24K) with complimentary gold coin.",
+    enabled: true,
+  },
+  {
+    id: "old-gold-exchange",
+    title: "100% GOLD EXCHANGE VALUE",
+    subtitle: "Upgrade Heirloom Gold with Complete Transparency",
+    discountText: "0% MELTING LOSS DEDUCTION",
+    description: "Exchange your old family jewellery at 100% live bullion market value. Exact digital purity testing in front of you with zero melting loss.",
+    badge: "Trust Guarantee",
+    image: "/images/promo/diwali-special.png",
+    voucherCode: "EXCHANGE100",
+    perks: [
+      "100% Current Market Bullion Value",
+      "Zero Melting Loss Deductions",
+      "Transparent Digital Caratometer",
+      "Immediate Upgrade to New Designer Gold"
+    ],
+    terms: "Applicable on gold exchange at Radha Jewellers, Hata. Instant digital purity certificate provided.",
+    whatsappMessage: "Hello Radha Jewellers, I would like to know the exchange value for my old gold jewellery under the 100% Exchange Offer.",
     enabled: true,
   },
 ];

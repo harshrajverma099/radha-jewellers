@@ -17,16 +17,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileMenu, isMobileMenu
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
+      if (!isHomePage) {
+        setIsScrolled(window.scrollY > 30);
+        return;
+      }
+
+      // On home page, navbar stays completely transparent as long as it is over the hero video
+      const heroEl = document.getElementById('home');
+      if (heroEl) {
+        const heroBottom = heroEl.getBoundingClientRect().bottom;
+        // Navbar is ~70px high; transition to solid only once scrolled past the hero video
+        setIsScrolled(heroBottom <= 75);
       } else {
-        setIsScrolled(false);
+        setIsScrolled(window.scrollY > (window.innerHeight - 80));
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isHomePage]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -38,14 +52,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileMenu, isMobileMenu
     { name: 'Contact', path: '/contact' },
   ];
 
-  // Determine if navbar should have transparent background (only on homepage before scrolling)
+  // Determine if navbar should have transparent background (while on the hero video)
   const isDarkTransparent = isHomePage && !isScrolled;
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isDarkTransparent
-          ? 'bg-emerald-dark/60 backdrop-blur-sm border-b border-white/10 py-4'
+          ? 'bg-transparent border-b border-transparent py-4'
           : 'bg-ivory/95 dark:bg-emerald-noir/95 backdrop-blur-md shadow-sm border-b border-beige/80 dark:border-white/10 py-3'
       }`}
     >

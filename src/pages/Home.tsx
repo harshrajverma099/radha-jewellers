@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/Hero';
 import { About } from '../components/About';
-import { ModelFilmsShowcase } from '../components/ModelFilmsShowcase';
+import { ScatteredVideoGallery } from '../components/ScatteredVideoGallery';
 import { JewelleryExperienceSection } from '../components/JewelleryExperienceSection';
 import { Collections } from '../components/Collections';
 import { FeaturedJewellery } from '../components/FeaturedJewellery';
@@ -23,8 +23,8 @@ export const Home: React.FC = () => {
       {/* 2. Brand Story & Heritage */}
       <About />
 
-      {/* 3. Elegance in Motion — Real Model Jewellery Films */}
-      <ModelFilmsShowcase />
+      {/* 3. Elegance in Motion — Editorial Scattered Autoplay Video Gallery */}
+      <ScatteredVideoGallery />
 
       {/* 4. The 3D Jewellery Experience */}
       <JewelleryExperienceSection />

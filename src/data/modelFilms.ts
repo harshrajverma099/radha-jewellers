@@ -95,3 +95,4 @@ export const modelFilmsData: ModelFilm[] = [
     highlightPieces: ['Tiered Jhumkis', 'Kundan Chandbalis', 'Floral Diamond Studs'],
   },
 ];
+

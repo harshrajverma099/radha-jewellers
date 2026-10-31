@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, MapPin, Sparkles, Play, Pause, Film } from 'lucide-react';
+import { ArrowRight, MapPin, Sparkles, Film } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Floating3D } from './Motion3D';
 import { trackEvent } from '../data/siteConfig';
@@ -42,7 +42,6 @@ const heroScenes: HeroScene[] = [
 
 export const Hero: React.FC = () => {
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -58,62 +57,100 @@ export const Hero: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Update video playback when scene changes
+  // Update video playback when scene changes, ensuring continuous, unpausable autoplay & loop
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {
-        // Autoplay may be restricted by some mobile browser power-saving modes
-      });
-      setIsPlaying(true);
-    }
-  }, [activeSceneIndex, isMobile]);
+    const vid = videoRef.current;
+    if (!vid) return;
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
+    // Enforce DOM muted & loop properties for strict Safari & Chrome compatibility
+    vid.defaultMuted = true;
+    vid.muted = true;
+    vid.loop = true;
+
+    const playVideo = () => {
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser policy initially delayed autoplay, immediately play on first interaction
+          const unlockAutoplay = () => {
+            vid.play().catch(() => {});
+            window.removeEventListener('click', unlockAutoplay);
+            window.removeEventListener('touchstart', unlockAutoplay);
+            window.removeEventListener('scroll', unlockAutoplay);
+          };
+          window.addEventListener('click', unlockAutoplay, { once: true, passive: true });
+          window.addEventListener('touchstart', unlockAutoplay, { once: true, passive: true });
+          window.addEventListener('scroll', unlockAutoplay, { once: true, passive: true });
+        });
+      }
+    };
+
+    playVideo();
+
+    // STRICT "NO PAUSE" GUARANTEE: If video is ever paused by the browser, immediately resume playback
+    const handlePause = () => {
+      vid.play().catch(() => {});
+    };
+
+    // When video ends, immediately rewind and replay seamlessly
+    const handleEnded = () => {
+      vid.currentTime = 0;
+      vid.play().catch(() => {});
+    };
+
+    // When tab/window regains focus or visibility
+    const handleVisibility = () => {
+      if (!document.hidden) {
+        vid.play().catch(() => {});
+      }
+    };
+
+    vid.addEventListener('pause', handlePause);
+    vid.addEventListener('ended', handleEnded);
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
+
+    // Continuous heartbeat verification: guarantees video is playing at all times
+    const heartbeat = setInterval(() => {
+      if (vid.paused) {
+        vid.play().catch(() => {});
+      }
+    }, 1500);
+
+    return () => {
+      vid.removeEventListener('pause', handlePause);
+      vid.removeEventListener('ended', handleEnded);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
+      clearInterval(heartbeat);
+    };
+  }, [activeSceneIndex, isMobile]);
 
   return (
     <section
       id="home"
-      className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center bg-emerald-dark overflow-hidden pt-24 pb-16 lg:py-0"
+      className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center bg-black overflow-hidden pt-24 pb-16 lg:py-0"
       aria-label="Hero Section"
     >
-      {/* Real Model Jewellery Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Real Model Jewellery Video Background - Natural Video Colors (Zero Green Texture, Strictly Non-Pausable) */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <video
           ref={videoRef}
           key={`${activeScene.id}-${isMobile ? 'mobile' : 'desktop'}`}
+          src={isMobile ? activeScene.mobileSrc : activeScene.desktopSrc}
           autoPlay
           muted
           loop
           playsInline
           poster={activeScene.poster}
-          className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
-        >
-          <source
-            src={isMobile ? activeScene.mobileSrc : activeScene.desktopSrc}
-            type="video/mp4"
-          />
-          {/* Fallback image */}
-          <img
-            src="/images/hero/hero-jewellery.jpg"
-            alt="Radha Jewellers Luxury Bridal Jewellery"
-            className="w-full h-full object-cover"
-          />
-        </video>
+          disablePictureInPicture
+          disableRemotePlayback
+          className="w-full h-full object-cover object-center pointer-events-none select-none"
+        />
 
-        {/* Multilayered radial and linear dark gradient for impeccable text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-dark/95 via-emerald-dark/75 to-emerald-dark/40 lg:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-dark via-transparent to-black/50" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/25 to-emerald-dark/80 pointer-events-none" />
+        {/* Clean Neutral Dark Scrim for text readability (Zero Green Tint/Texture) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
       {/* Decorative Gold Radial Glow */}
@@ -179,8 +216,8 @@ export const Hero: React.FC = () => {
             </Link>
           </div>
 
-          {/* Interactive Model Video Film Switcher */}
-          <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          {/* Interactive Model Video Film Switcher (Autoplay & Continuous Repeat) */}
+          <div className="pt-6 border-t border-white/15 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 sm:pb-0">
               <span className="text-[11px] uppercase tracking-widest text-gold-light font-medium mr-1 flex items-center gap-1.5 flex-shrink-0">
                 <Film className="w-3.5 h-3.5" />
@@ -205,21 +242,17 @@ export const Hero: React.FC = () => {
               ))}
             </div>
 
-            {/* Video Play/Pause toggle */}
-            <button
-              onClick={togglePlay}
-              className="p-2 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-ivory hover:text-gold-light transition-colors"
-              title={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
-              aria-label={isPlaying ? 'Pause Background Video' : 'Play Background Video'}
-            >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            </button>
+            {/* Continuous Loop / Autoplay Indicator */}
+            <div className="hidden sm:flex items-center gap-2 text-[11px] tracking-widest text-gold-light/80 uppercase font-medium">
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+              <span>Autoplay Loop</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom section gradient blend */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory dark:from-emerald-noir to-transparent pointer-events-none transition-colors duration-300" />
+      {/* Subtle bottom fade to seamlessly blend into next section without green tint */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
     </section>
   );
 };
