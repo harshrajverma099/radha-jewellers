@@ -5,10 +5,7 @@ import { Scroll3DReveal } from './Motion3D';
 import { siteConfig, trackEvent } from '../data/siteConfig';
 
 export const MapSection: React.FC = () => {
-  const { latitude, longitude } = siteConfig.address;
-  // OpenStreetMap embed based on verified coordinates (26.741685, 83.742696)
-  // Ensures fast, zero-auth, zero-tracker responsive map rendering!
-  const embedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${longitude - 0.015}%2C${latitude - 0.01}%2C${longitude + 0.015}%2C${latitude + 0.01}&layer=mapnik&marker=${latitude}%2C${longitude}`;
+  const embedUrl = siteConfig.embedMapUrl;
 
   return (
     <section id="location" className="py-20 bg-ivory dark:bg-emerald-noir relative transition-colors duration-300" aria-label="Showroom Location & Map">
@@ -23,20 +20,32 @@ export const MapSection: React.FC = () => {
         {/* Map Container & Address Card in 3D */}
         <Scroll3DReveal delay={0.15}>
           <div className="bg-white dark:bg-emerald-surface rounded-3xl overflow-hidden border border-beige/80 dark:border-white/10 shadow-luxury dark:shadow-darkcard flex flex-col lg:flex-row">
-          {/* Map Frame */}
-          <div className="relative w-full lg:w-2/3 h-80 sm:h-96 lg:h-[460px] bg-cream dark:bg-emerald-midnight">
+          {/* Map Frame - Interactive Google Map */}
+          <div className="relative w-full lg:w-2/3 h-80 sm:h-96 lg:h-[460px] bg-cream dark:bg-emerald-midnight group">
             <iframe
-              title="Radha Jewellers Showroom Map"
+              title="Radha Jewellers Showroom Google Map"
               src={embedUrl}
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
             {/* Quick Map Overlay Badge */}
-            <div className="absolute top-4 left-4 bg-white/95 dark:bg-emerald-midnight/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-beige dark:border-white/10 shadow-sm flex items-center gap-2 text-xs font-semibold text-charcoal dark:text-ivory">
-              <span className="w-2 h-2 rounded-full bg-gold" />
-              <span>Radha Jewellers • Hata</span>
+            <div className="absolute top-4 left-4 bg-white/95 dark:bg-emerald-midnight/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-beige dark:border-white/10 shadow-sm flex items-center gap-2 text-xs font-semibold text-charcoal dark:text-ivory pointer-events-none">
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+              <span>Radha Jewellers • Hata Bazar</span>
             </div>
+
+            {/* Floating Quick Action Button */}
+            <a
+              href={siteConfig.directionsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('map_floating_directions_click')}
+              className="absolute bottom-4 right-4 bg-black/85 hover:bg-gold text-white text-xs font-medium px-4 py-2 rounded-full border border-gold/40 shadow-md backdrop-blur-md flex items-center gap-1.5 transition-all transform hover:scale-105"
+            >
+              <Navigation className="w-3.5 h-3.5 text-gold-light" />
+              <span>Open in Maps App</span>
+            </a>
           </div>
 
           {/* Location Summary & Navigation CTAs */}
@@ -44,25 +53,25 @@ export const MapSection: React.FC = () => {
             <div className="space-y-6">
               <div>
                 <span className="text-[11px] uppercase tracking-widestluxury text-gold-dark dark:text-gold-light font-semibold block mb-1">
-                  EXACT LOCATION
+                  EXACT SHOWROOM LOCATION
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-charcoal dark:text-ivory mb-2">
+                <h3 className="font-serif text-2xl font-bold text-charcoal dark:text-ivory mb-1">
                   Radha Jewellers
                 </h3>
-                <p className="text-xs text-warmgray dark:text-beige/70">Since 2003</p>
+                <p className="text-xs text-warmgray dark:text-beige/70">Timeless Elegance Since 2003</p>
               </div>
 
               <div className="space-y-2 text-sm text-warmgray-dark dark:text-beige/85">
-                <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
-                <p>{siteConfig.address.landmark}</p>
-                <p>
+                <p className="font-semibold text-charcoal dark:text-ivory flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                  <span>{siteConfig.address.line1}</span>
+                </p>
+                <p className="pl-6">{siteConfig.address.landmark}</p>
+                <p className="pl-6">
                   {siteConfig.address.city}, {siteConfig.address.district} - {siteConfig.address.pincode}
                 </p>
-                <p>
+                <p className="pl-6">
                   {siteConfig.address.state}, {siteConfig.address.country}
-                </p>
-                <p className="text-xs text-gold-dark dark:text-gold-light font-mono pt-2">
-                  Coords: {latitude.toFixed(6)}° N, {longitude.toFixed(6)}° E
                 </p>
               </div>
             </div>
@@ -87,8 +96,19 @@ export const MapSection: React.FC = () => {
                 onClick={() => trackEvent('map_open_app_click')}
                 className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-beige dark:border-white/15 hover:border-gold dark:hover:border-gold-light bg-cream/30 dark:bg-emerald-midnight/60 text-charcoal dark:text-ivory hover:text-gold-dark dark:hover:text-gold-light font-medium text-xs uppercase tracking-wider transition-all"
               >
-                <span>Open in Google Maps App</span>
+                <span>Open Radha Jewellers on Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={siteConfig.shortMapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('map_shortlink_click')}
+                className="w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] text-warmgray dark:text-beige/70 hover:text-gold-dark dark:hover:text-gold-light transition-colors text-center"
+              >
+                <span>Direct Google Maps Link</span>
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>

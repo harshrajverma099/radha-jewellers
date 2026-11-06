@@ -28,6 +28,8 @@ export interface SiteConfig {
   address: ShowroomAddress;
   googleMapsLink: string;
   directionsLink: string;
+  shortMapsLink: string;
+  embedMapUrl: string;
   openingHours?: string;
   instagramUrl?: string;
   googleReviewsUrl?: string;
@@ -55,8 +57,14 @@ export const siteConfig: SiteConfig = {
     latitude: 26.741685,
     longitude: 83.742696,
   },
-  googleMapsLink: "https://maps.app.goo.gl/b2tHZV42Gw9AAqu5A",
-  directionsLink: "https://maps.app.goo.gl/b2tHZV42Gw9AAqu5A",
+  // Universal Google Maps search URL (guaranteed to open verified Radha Jewellers pin on all devices)
+  googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Radha+Jewellers,+Hata+bazar,+Ucchtar+Prathmik+Kanya+Vidyalaya+ke+saamne,+Kushinagar,+Hata,+Uttar+Pradesh+274203",
+  // Universal Google Maps turn-by-turn directions URL
+  directionsLink: "https://www.google.com/maps/dir/?api=1&destination=Radha+Jewellers,+Hata+bazar,+Ucchtar+Prathmik+Kanya+Vidyalaya+ke+saamne,+Kushinagar,+Hata,+Uttar+Pradesh+274203",
+  // Shortlink provided by business
+  shortMapsLink: "https://maps.app.goo.gl/b2tHZV42Gw9AAqu5A",
+  // Direct Google Maps embed URL for interactive in-page viewing
+  embedMapUrl: "https://maps.google.com/maps?q=Radha+Jewellers,+Hata+bazar,+Ucchtar+Prathmik+Kanya+Vidyalaya+ke+saamne,+Kushinagar,+Hata,+Uttar+Pradesh+274203&t=&z=16&ie=UTF8&iwloc=&output=embed",
   // Verification-dependent fields: kept empty until verified by business
   openingHours: "",
   instagramUrl: "",
