@@ -31,7 +31,7 @@ export const activePromotions: Promotion[] = [
       "Complimentary Luxury Jewellery Box",
       "Zero Hidden Weighing Deductions"
     ],
-    terms: "Applicable on making charges at Radha Jewellers showroom, Hata Main Road. For details on eligible categories, kindly enquire with our showroom team.",
+    terms: "Applicable on making charges at Radha Jewellers showroom, Hata Bazar. For details on eligible categories, kindly enquire with our showroom team.",
     whatsappMessage: "Hello Radha Jewellers, I would like to claim the Diwali Special voucher RADHA70 for Flat 70% Off on Making Charges.",
     enabled: true,
   },

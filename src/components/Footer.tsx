@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
                   <p className="font-medium text-ivory">{siteConfig.brandName}</p>
                   <p>{siteConfig.address.line1}</p>
                   <p>{siteConfig.address.landmark}</p>
-                  <p>{siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state}</p>
+                  <p>{siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state} - {siteConfig.address.pincode}</p>
                 </div>
               </div>
 

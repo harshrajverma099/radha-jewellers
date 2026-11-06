@@ -97,7 +97,7 @@ export const Experience3DPage: React.FC = () => {
             <div className="pt-3 border-t border-beige/80 dark:border-white/10 text-[11px] text-warmgray dark:text-beige/70 space-y-1.5">
               <div className="flex items-center gap-1.5 text-charcoal dark:text-ivory font-medium">
                 <MapPin className="w-3.5 h-3.5 text-gold-dark dark:text-gold-light" />
-                <span>Showroom: Hata Main Road, Kushinagar</span>
+                <span>Showroom: Hata Bazar, Kushinagar</span>
               </div>
               <p className="leading-relaxed">
                 * Note: Real creations feature unique handcrafted nuances that are best experienced in person.

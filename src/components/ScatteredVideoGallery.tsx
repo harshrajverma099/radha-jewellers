@@ -322,7 +322,7 @@ export const ScatteredVideoGallery: React.FC = () => {
         {/* Closing Editorial Note */}
         <div className="mt-16 sm:mt-24 text-center">
           <p className="text-xs uppercase tracking-widest text-warmgray dark:text-beige/70 font-medium">
-            Every creation is available for private showroom viewing and custom bridal consultation at Hata Main Road.
+            Every creation is available for private showroom viewing and custom bridal consultation at Hata Bazar.
           </p>
         </div>
 

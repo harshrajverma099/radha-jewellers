@@ -17,7 +17,7 @@ export const MapSection: React.FC = () => {
         <SectionHeading
           badge="Find Us Easily"
           title="Showroom Location"
-          subtitle="Centrally located on Hata Main Road, opposite Ucchtar Prathmik Kanya Vidyalaya."
+          subtitle="Centrally located in Hata Bazar, opposite Ucchtar Prathmik Kanya Vidyalaya."
         />
 
         {/* Map Container & Address Card in 3D */}
@@ -56,7 +56,7 @@ export const MapSection: React.FC = () => {
                 <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
                 <p>{siteConfig.address.landmark}</p>
                 <p>
-                  {siteConfig.address.city}, {siteConfig.address.district}
+                  {siteConfig.address.city}, {siteConfig.address.district} - {siteConfig.address.pincode}
                 </p>
                 <p>
                   {siteConfig.address.state}, {siteConfig.address.country}

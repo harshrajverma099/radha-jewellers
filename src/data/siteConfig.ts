@@ -10,6 +10,7 @@ export interface ShowroomAddress {
   district: string;
   state: string;
   country: string;
+  pincode?: string;
   fullFormatted: string;
   latitude: number;
   longitude: number;
@@ -43,18 +44,19 @@ export const siteConfig: SiteConfig = {
   phoneLink: "tel:+918433351515",
   whatsappNumber: "918433351515",
   address: {
-    line1: "Hata Main Road",
-    landmark: "Opposite Ucchtar Prathmik Kanya Vidyalaya",
+    line1: "Hata Bazar",
+    landmark: "Ucchtar Prathmik Kanya Vidyalaya ke saamne",
     city: "Hata",
     district: "Kushinagar",
     state: "Uttar Pradesh",
+    pincode: "274203",
     country: "India",
-    fullFormatted: "Hata Main Road, opposite Ucchtar Prathmik Kanya Vidyalaya, Hata, Kushinagar, Uttar Pradesh, India",
+    fullFormatted: "Hata bazar, Ucchtar Prathmik Kanya Vidyalaya ke saamne, Kushinagar, Hata, Uttar Pradesh 274203",
     latitude: 26.741685,
     longitude: 83.742696,
   },
-  googleMapsLink: "https://maps.app.goo.gl/thBsUqD6jGY2pUMZ9",
-  directionsLink: "https://www.google.com/maps/dir/?api=1&destination=26.741685,83.742696",
+  googleMapsLink: "https://maps.app.goo.gl/b2tHZV42Gw9AAqu5A",
+  directionsLink: "https://maps.app.goo.gl/b2tHZV42Gw9AAqu5A",
   // Verification-dependent fields: kept empty until verified by business
   openingHours: "",
   instagramUrl: "",

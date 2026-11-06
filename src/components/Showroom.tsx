@@ -71,7 +71,7 @@ export const Showroom: React.FC = () => {
                     <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
                     <p className="text-warmgray-dark dark:text-beige/75">{siteConfig.address.landmark}</p>
                     <p className="text-warmgray-dark dark:text-beige/75">
-                      {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state}, {siteConfig.address.country}
+                      {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state} - {siteConfig.address.pincode}, {siteConfig.address.country}
                     </p>
                   </div>
                 </div>

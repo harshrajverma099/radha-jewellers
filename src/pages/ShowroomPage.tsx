@@ -23,7 +23,7 @@ export const ShowroomPage: React.FC = () => {
     },
     {
       title: 'Convenient Hata Location',
-      desc: 'Prominently situated on Hata Main Road, easily accessible across Kushinagar and neighbouring towns.',
+      desc: 'Prominently situated in Hata Bazar, easily accessible across Kushinagar and neighbouring towns.',
     },
   ];
 
@@ -84,7 +84,7 @@ export const ShowroomPage: React.FC = () => {
                 <p className="font-semibold text-charcoal dark:text-ivory">{siteConfig.address.line1}</p>
                 <p className="text-warmgray-dark dark:text-beige/75">{siteConfig.address.landmark}</p>
                 <p className="text-warmgray-dark dark:text-beige/75">
-                  {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state}, {siteConfig.address.country}
+                  {siteConfig.address.city}, {siteConfig.address.district}, {siteConfig.address.state} - {siteConfig.address.pincode}, {siteConfig.address.country}
                 </p>
                 {siteConfig.openingHours && (
                   <p className="pt-2 text-xs font-medium text-charcoal dark:text-ivory">
